@@ -1,41 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseController
 {
-    [SerializeField] private float moveSpeed;
-
-    Rigidbody2D rb;
-    float h;
-    float v;
-
-
-    private void Awake()
+    protected override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();            
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        Movement();
-    }
-
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector2(h, v).normalized * moveSpeed;
+        base.Start();
     }
 
     // ¿Ãµø
-    private void Movement()
+    protected override void Action()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        moveDirection = new Vector2(horizontal, vertical).normalized;
     }
 }
