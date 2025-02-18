@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get { return gameManager; } } // 변수를 맵으로 가져가는 프로퍼티
 
-    private int currentScore = 0;
+    int currentScore = 0;
+    int bestScore = 0;
+    public int BestScore { get => bestScore; }
+
+    private const string BestScoreKey = "BestScore";
 
     UIManager uiManager;
     public UIManager UIManager { get { return uiManager; } }
@@ -23,18 +27,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
         uiManager.UpdateScore(0);
     }
 
     public void GameOver()
     {
-        Debug.Log("Game Over");
-        uiManager.SetRestart();
+        uiManager.SetEnd();
+        SaveScore();
     }
 
-    public void RestartGame()
+    public void RetryGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 켜진 씬의 이름으로 다시 씬을 로드
+    }
+
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
     public void AddScore(int score)
@@ -44,4 +54,13 @@ public class GameManager : MonoBehaviour
         uiManager.UpdateScore(currentScore);
     }
 
+    public void SaveScore()
+    {
+        if (currentScore > bestScore)
+        {
+            bestScore = currentScore;
+
+            PlayerPrefs.SetInt(BestScoreKey, bestScore);
+        }
+    }
 }

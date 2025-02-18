@@ -1,19 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI restartText;
+    public GameObject panel;
+    public Button retryButton, exitButton;
+    public TextMeshProUGUI scoreText
 
     public void Start()
     {
-        if (restartText == null)
+        if (retryButton == null)
         {
-            Debug.LogError("restart text is null");
+            Debug.LogError("retry button is null");
+        }
+
+        if (exitButton == null)
+        {
+            Debug.LogError("exit button is null");
         }
 
         if (scoreText == null)
@@ -22,12 +26,12 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        restartText.gameObject.SetActive(false);
+        panel.gameObject.SetActive(false);
     }
 
-    public void SetRestart()
+    public void SetEnd()
     {
-        restartText.gameObject.SetActive(true);
+        panel.gameObject.SetActive(true);
     }
 
     public void UpdateScore(int score)

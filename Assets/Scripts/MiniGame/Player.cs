@@ -38,31 +38,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (isDead)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            if (deathCooldown <= 0)
-            {
-                // 스페이스바나 마우스의 좌클릭을 사용할 경우. (0)은 모바일의 경우 터치
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                {
-                    // 게임 재시작
-                    if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                    {
-                        gameManager.RestartGame();
-                    }
-                }
-            }
-            else
-            {
-                deathCooldown -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
-                isFlap = true;
-            }
+            isFlap = true;
         }
     }
 
