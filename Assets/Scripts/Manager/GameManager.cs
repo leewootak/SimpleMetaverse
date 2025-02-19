@@ -27,8 +27,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0;
         bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
         uiManager.UpdateScore(0);
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+        uiManager.SetStart();
     }
 
     public void GameOver()
