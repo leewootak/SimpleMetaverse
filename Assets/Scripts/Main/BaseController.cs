@@ -7,11 +7,14 @@ public class BaseController : MonoBehaviour
     protected Vector2 moveDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return moveDirection; } }
 
+    protected AnimationHandler animationHandler;
+
     Rigidbody2D rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animationHandler = GetComponent<AnimationHandler>();
     }
 
     // Start is called before the first frame update
@@ -44,6 +47,7 @@ public class BaseController : MonoBehaviour
         direction = direction * 5;
 
         rb.velocity = direction;
+        animationHandler.Move(direction);
     }
 
     private void Rotate(Vector2 direction)
