@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     public float flapForce = 6f;
     public float forwardSpeed = 3f;
     public bool isDead = false;
-    float deathCooldown = 0f;
 
     bool isFlap = false;
 
@@ -77,6 +76,5 @@ public class Player : MonoBehaviour
         animator.SetInteger("isDie", 1); // 애니메이터에서 isDie 정수형 파라미터 1로 변경
         gameManager.GameOver();
         isDead = true;
-        deathCooldown = 1f;
     }
 }

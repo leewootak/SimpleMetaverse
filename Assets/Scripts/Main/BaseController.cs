@@ -17,13 +17,11 @@ public class BaseController : MonoBehaviour
         animationHandler = GetComponent<AnimationHandler>();
     }
 
-    // Start is called before the first frame update
     protected virtual void Start()
     {
 
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
         Action();
@@ -40,8 +38,6 @@ public class BaseController : MonoBehaviour
         Movement(moveDirection);
     }
 
-
-
     private void Movement(Vector2 direction)
     {
         direction = direction * 5;
@@ -52,6 +48,10 @@ public class BaseController : MonoBehaviour
 
     private void Rotate(Vector2 direction)
     {
+        // 입력이 없으면 flip 상태 변경하지 않음
+        if (direction == Vector2.zero)
+            return;
+
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         bool isLeft = Mathf.Abs(rotZ) > 90f;
 

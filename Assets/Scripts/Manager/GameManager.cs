@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0.3f;
+        Time.timeScale = 0.4f;
         uiManager.SetEnd();
         SaveScore();
     }
