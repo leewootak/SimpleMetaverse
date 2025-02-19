@@ -6,7 +6,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject endUI, startUI;
     public Button retryButton, exitButton;
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText, curScore, bestScore;
 
     public void Start()
     {
@@ -43,5 +43,11 @@ public class UIManager : MonoBehaviour
     public void UpdateScore(int score)
     {
         scoreText.text = score.ToString();
+    }
+
+    public void Result(int score, int best)
+    {
+        curScore.text = score.ToString();
+        bestScore.text = best.ToString();
     }
 }

@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Time.timeScale = 0.2f;
         uiManager.SetEnd();
         SaveScore();
     }
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
     public void RetryGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 켜진 씬의 이름으로 다시 씬을 로드
+        Debug.Log($" 현재 최고점수: {bestScore}");
     }
 
     public void ExitGame()
@@ -68,6 +70,12 @@ public class GameManager : MonoBehaviour
             bestScore = currentScore;
 
             PlayerPrefs.SetInt(BestScoreKey, bestScore);
+            uiManager.Result(currentScore, bestScore);
+            Debug.Log($"최고점수 갱신: {currentScore}");
+        }
+        else
+        {
+            uiManager.Result(currentScore, bestScore);
         }
     }
 }
