@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0.2f;
+        Time.timeScale = 0.3f;
         uiManager.SetEnd();
         SaveScore();
     }
@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainScene");
     }
 
