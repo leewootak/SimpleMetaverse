@@ -33,11 +33,13 @@ public class UIManager : MonoBehaviour
     public void SetStart()
     {
         startUI.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(true);
     }
 
     public void SetEnd()
     {
         endUI.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(false);
     }
 
     public void UpdateScore(int score)

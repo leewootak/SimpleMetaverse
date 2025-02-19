@@ -4883,7 +4883,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC2A4\uD398\uC774\uC2A4\uBC14 \uB610\uB294 \uB9C8\uC6B0\uC2A4 \uC88C\uD074\uB9AD\uC744
     \uD1B5\uD574\n\uCE90\uB9AD\uD130\uB97C \uC870\uC791\uD558\uC5EC \uC7A5\uC560\uBB3C\uC744
-    \uD53C\uD574\uBCF4\uC138\uC694!"
+    \uD53C\uD574\uBCF4\uC138\uC694!\n\n(10\uC810 \uC774\uC0C1\uC77C \uACBD\uC6B0
+    \uC131\uACF5)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0db36e1e947eaf498d050084c306314, type: 2}
   m_sharedMaterial: {fileID: 8448409491752668825, guid: b0db36e1e947eaf498d050084c306314, type: 2}
