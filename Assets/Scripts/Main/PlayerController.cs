@@ -32,8 +32,11 @@ public class PlayerController : MonoBehaviour
     {
         Action();
         Rotate(moveDirection);
-        if (Input.GetButtonDown("Jump") && scanObject != null)
+        // 스캔 중이 아닐 때만 스페이스바 입력으로 스캔 처리
+        if (!scanManager.isScan && Input.GetButtonDown("Jump") && scanObject != null)
+        {
             scanManager.Scan(scanObject);
+        }
     }
 
     protected virtual void Action()
@@ -58,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
         // 스캐닝
         Debug.DrawRay(rb.position, rayDirection * 1.5f, new Color(0, 1, 0));
-        RaycastHit2D rayHit = Physics2D.Raycast(rb.position, rayDirection, 1.5f, LayerMask.GetMask("Object"));
+        RaycastHit2D rayHit = Physics2D.Raycast(rb.position, rayDirection, 1.5f, LayerMask.GetMask("Object", "NPC"));
 
         if (rayHit.collider != null)
             scanObject = rayHit.collider.gameObject;
@@ -84,13 +87,5 @@ public class PlayerController : MonoBehaviour
         bool isLeft = Mathf.Abs(rotZ) > 90f;
 
         characterRenderer.flipX = isLeft;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("NPC"))
-        {
-            SceneManager.LoadScene("MiniGameScene");
-        }
     }
 }
