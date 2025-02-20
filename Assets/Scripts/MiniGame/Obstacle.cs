@@ -5,10 +5,11 @@ using Random = UnityEngine.Random;
 
 public class Obstacle : MonoBehaviour
 {
+    // 높낮이
     public float highPosY = 1f;
     public float lowPosY = -1f;
 
-    //top bottom 사이의 공간
+    // 상하 간격
     public float holeSizeMin = 1f;
     public float holeSizeMax = 3f;
 
@@ -24,12 +25,7 @@ public class Obstacle : MonoBehaviour
         gameManager = GameManager.Instance;        
     }
 
-    /// <summary>
-    /// 랜덤 장애물 간격
-    /// </summary>
-    /// <param name="lastPosition"></param>
-    /// <param name="obstacleCount"></param>
-    /// <returns></returns>
+    // 랜덤 장애물 간격
     public Vector3 SetRandomPlace(Vector3 lastPosition, int obstacleCount)
     {
         float holeSize = Random.Range(holeSizeMin, holeSizeMax);
@@ -47,6 +43,7 @@ public class Obstacle : MonoBehaviour
         return placePosition;
     }
 
+    // 장애물 충돌
     private void OnTriggerExit2D(Collider2D collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();

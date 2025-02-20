@@ -16,7 +16,7 @@ public class ScanManager : MonoBehaviour
     {
         if (isScan)
         {
-            // 스페이스바가 눌리지 않은 상태(릴리즈)를 확인한 후에야 재입력 허용
+            // 스페이스바가 눌리지 않은 상태를 확인한 후 재입력 허용
             if (!canConfirm && !Input.GetButton("Jump"))
             {
                 canConfirm = true;
@@ -43,11 +43,11 @@ public class ScanManager : MonoBehaviour
         if (isScan) return;  // 이미 스캔 중이면 무시
 
         isScan = true;
-        canConfirm = false;  // 스캔 시작 시에는 즉시 확인하지 않음
+        canConfirm = false;  // 스캔 시작 시 즉시 확인x
         scanObject = scanObj;
 
         int objLayer = scanObj.layer;
-        if (objLayer == 6) // NPC 레이어 번호 (예: 6)
+        if (objLayer == 6) // NPC 레이어 번호
         {
             talkText.text = "어서와! 지금 바로 미니게임으로 이동 시켜줄게";
             isNPC = true;

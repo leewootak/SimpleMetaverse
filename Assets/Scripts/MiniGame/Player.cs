@@ -63,10 +63,7 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, lerpAngle); // z축 회전 적용
     }
 
-    /// <summary>
-    /// 충돌 메서드
-    /// </summary>
-    /// <param name="collision"></param>
+    // 장애물 충돌
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (godMode) return;
