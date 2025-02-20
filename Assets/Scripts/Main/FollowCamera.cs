@@ -15,6 +15,8 @@ public class FollowCamera : MonoBehaviour
         float clampX = Mathf.Clamp(targetPosition.x, minX, maxX);
         float clampY = Mathf.Clamp(targetPosition.y, minY, maxY);
 
+        //transform.position = Vector3.Lerp(targetPosition);
+
         // 제한된 값을 적용하여 카메라 위치 설정
         transform.position = new Vector3(clampX, clampY, -10);
     }
